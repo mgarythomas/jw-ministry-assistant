@@ -1,8 +1,16 @@
 
-> my-app@0.1.0 start
-> next start
+> my-app@0.1.0 dev
+> next dev
 
-▲ Next.js 16.2.1
+▲ Next.js 16.2.1 (Turbopack)
 - Local:         http://localhost:3000
 - Network:       http://192.168.0.2:3000
-✓ Ready in 296ms
+✓ Ready in 534ms
+
+○ Compiling /data-privacy-consent ...
+ GET /data-privacy-consent 200 in 5.8s (next.js: 5.3s, application-code: 458ms)
+✓ Compiled in 92ms
+ GET /data-privacy-consent 200 in 134ms (next.js: 8ms, application-code: 125ms)
+ GET /data-privacy-consent 200 in 100ms (next.js: 7ms, application-code: 92ms)
+ GET /data-privacy-consent 200 in 80ms (next.js: 4ms, application-code: 77ms)
+ GET /publisher-profile 200 in 1772ms (next.js: 1108ms, application-code: 664ms)
