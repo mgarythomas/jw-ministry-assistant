@@ -1,8 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
-/.pnp
+# ─── Dependencies ────────────────────────────────────────────
+# Matches node_modules at every level of the monorepo
+**/node_modules/
+.pnp
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -10,32 +11,42 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# ─── Turborepo ───────────────────────────────────────────────
+.turbo/
 
-# next.js
-/.next/
-/out/
+# ─── Next.js (any app) ───────────────────────────────────────
+**/.next/
+**/out/
 
-# production
-/build
+# ─── Build outputs ───────────────────────────────────────────
+# Lambda TypeScript compile output
+**/dist/
 
-# misc
-.DS_Store
-*.pem
+# Generic production build folders
+**/build/
 
-# debug
+# ─── Testing ─────────────────────────────────────────────────
+**/coverage/
+
+# ─── Logs ────────────────────────────────────────────────────
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# ─── Environment variables ───────────────────────────────────
+# Opt-in to committing specific env files if needed
 .env*
+!.env.example
 
-# vercel
+# ─── Misc ────────────────────────────────────────────────────
+.DS_Store
+*.pem
+*.tsbuildinfo
+
+# ─── Vercel ──────────────────────────────────────────────────
 .vercel
 
-# typescript
-*.tsbuildinfo
+# ─── TypeScript generated ────────────────────────────────────
 next-env.d.ts
