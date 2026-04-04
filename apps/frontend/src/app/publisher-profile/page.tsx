@@ -1,23 +1,47 @@
 import React from "react";
-import { TopAppBar } from "@/components/TopAppBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { DatePicker } from "@/components/ui/date-picker";
+import { Switch } from "@/components/ui/switch";
 import {
-  Users, User, ClipboardList, Settings,
+  Search, Bell, Settings, Users, User, ClipboardList,
   Map as MapIcon, BarChart3, LogOut, Badge as BadgeIcon,
   Contact, Calendar, Waves, ShieldCheck, Sparkles,
-  UserCircle, HeartHandshake, Verified, Info
+  UserCircle, HeartHandshake, Verified, Info, Shield as ShieldIcon
 } from "lucide-react";
 
 export default function PublisherProfile() {
   return (
     <div className="bg-background text-on-background min-h-screen font-body">
-      <TopAppBar activeTab="Publishers" />
+      {/* TopAppBar */}
+      <nav className="fixed top-0 w-full z-50 bg-[#fbf9f8]/70 dark:bg-slate-900/70 backdrop-blur-md shadow-sm dark:shadow-none flex justify-between items-center px-6 py-3">
+        <div className="flex items-center gap-4">
+          <span className="text-xl font-bold tracking-tight text-[#1b1c1c] dark:text-slate-100 font-headline">The Serene Archivist</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center bg-[#efeded] dark:bg-slate-800 rounded-full px-4 py-1.5 transition-colors">
+            <Search size={16} className="text-slate-500 mr-2" />
+            <input className="bg-transparent border-none focus:ring-0 text-sm w-48 outline-none placeholder:text-slate-500" placeholder="Search records..." type="text" />
+          </div>
+          <div className="flex items-center gap-2">
+            <button className="p-2 text-[#1b1c1c]/60 dark:text-slate-400 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-full transition-colors active:scale-95 duration-200">
+              <Bell size={20} />
+            </button>
+            <button className="p-2 text-[#1b1c1c]/60 dark:text-slate-400 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-full transition-colors active:scale-95 duration-200">
+              <Settings size={20} />
+            </button>
+            <div className="h-10 w-10 rounded-full overflow-hidden ml-2 ring-2 ring-primary/10">
+              <Avatar className="w-full h-full">
+                <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgBZBneET4fAyVJqw90UEITpxiXIP61aRsOYnyrFVpxLciLj0c9pRhmhmj1IbWDgcV_rq-tY_abOV7Q3cNllVkr0ayOu9m1egDgWCpopWqlZ9nFH3wmaUo3a4ZrGwjG3RH3wGFQimzPXvDedbC3a1sYkfNs30-_v4tD9i0Og2eFN1cJM87uVW5rJtfcIFqmpUu0zoMz7apv5UFPRPuludVM0w8di46u4lqhV9V2dyFXpHUn9aSgogbWbo6ySi2WUApcvtY7-2h" alt="User" className="object-cover" />
+                <AvatarFallback>U</AvatarFallback>
+              </Avatar>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       {/* SideNavBar (Desktop Only) */}
       <aside className="hidden md:flex h-screen w-64 fixed left-0 top-0 bg-[#fbf9f8] dark:bg-slate-950 flex-col p-4 space-y-2 pt-20 border-r-0">
@@ -138,21 +162,15 @@ export default function PublisherProfile() {
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Date of Birth</label>
                     <div className="flex items-center bg-surface-container-low rounded-t-md overflow-hidden border-b-2 border-transparent focus-within:border-primary">
-                      <DatePicker 
-                        className="w-full bg-transparent border-none focus-visible:ring-0 p-6 shadow-none rounded-none text-base hover:bg-transparent" 
-                        defaultDate={new Date("1988-05-14T12:00:00Z")} 
-                        icon={<Calendar size={20} className="mr-3 text-on-surface-variant" />} 
-                      />
+                      <Calendar size={20} className="ml-4 text-on-surface-variant" />
+                      <Input className="w-full bg-transparent border-none focus-visible:ring-0 p-6 shadow-none" type="date" defaultValue="1988-05-14" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Date of Baptism</label>
                     <div className="flex items-center bg-surface-container-low rounded-t-md overflow-hidden border-b-2 border-transparent focus-within:border-primary">
-                      <DatePicker 
-                        className="w-full bg-transparent border-none focus-visible:ring-0 p-6 shadow-none rounded-none text-base hover:bg-transparent" 
-                        defaultDate={new Date("2005-09-22T12:00:00Z")} 
-                        icon={<Waves size={20} className="mr-3 text-on-surface-variant" />} 
-                      />
+                      <Waves size={20} className="ml-4 text-on-surface-variant" />
+                      <Input className="w-full bg-transparent border-none focus-visible:ring-0 p-6 shadow-none" type="date" defaultValue="2005-09-22" />
                     </div>
                   </div>
                   <div className="sm:col-span-2 pt-2">
@@ -163,14 +181,64 @@ export default function PublisherProfile() {
                       </Badge>
                     </label>
                     <div className="flex items-center bg-surface-container-low/50 rounded-t-md overflow-hidden border-b border-outline/10">
-                      <DatePicker 
-                        disabled
-                        className="w-full bg-transparent border-none focus-visible:ring-0 p-6 shadow-none rounded-none text-base hover:bg-transparent text-on-surface/60 disabled:opacity-100" 
-                        defaultDate={new Date("2023-11-15T12:00:00Z")} 
-                        icon={<ShieldCheck size={20} className="mr-3 text-outline/50" />} 
-                      />
+                      <ShieldCheck size={20} className="ml-4 text-outline/50" />
+                      <Input className="w-full bg-transparent border-none focus-visible:ring-0 p-6 shadow-none text-on-surface/60 cursor-not-allowed" disabled type="date" defaultValue="2023-11-15" />
                     </div>
                     <p className="text-[10px] text-on-surface-variant/70 mt-2 italic">This record is updated by the congregation administration after each security briefing.</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Privacy & Consent Preferences Section */}
+              <Card className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-none">
+                <CardHeader className="p-0 flex flex-row items-center gap-3 mb-6 space-y-0">
+                  <ShieldIcon size={24} className="text-primary" />
+                  <CardTitle className="text-xl font-bold font-headline">Privacy &amp; Consent Preferences</CardTitle>
+                </CardHeader>
+                <CardContent className="p-0 space-y-4">
+                  {/* Preference Item 1 */}
+                  <div className="flex items-start justify-between p-6 bg-surface-container-low rounded-lg gap-6 group">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-sm mb-1.5">Contact Information</h3>
+                      <p className="text-xs text-on-surface-variant leading-relaxed break-words whitespace-normal">
+                        I consent to the congregation maintaining my contact information (Address, Email, and Phone numbers) for internal communication and support. This information will only be shared with Elders and only when required to perform their role as shepherds within the congregation.
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 pt-1">
+                      <Switch id="contact-info-switch" defaultChecked className="data-[state=checked]:bg-primary" />
+                    </div>
+                  </div>
+
+                  {/* Preference Item 2 */}
+                  <div className="flex items-start justify-between p-6 bg-surface-container-low rounded-lg gap-6 group">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-sm mb-1.5">Role Visibility</h3>
+                      <p className="text-xs text-on-surface-variant leading-relaxed break-words whitespace-normal">
+                        Include your spiritual appointments on congregation lists.
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 pt-1">
+                      <Switch id="role-visibility-switch" defaultChecked className="data-[state=checked]:bg-primary" />
+                    </div>
+                  </div>
+
+                  {/* Preference Item 3 */}
+                  <div className="flex items-start justify-between p-6 bg-surface-container-low rounded-lg gap-6 group">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-sm mb-1.5">Terms of Service</h3>
+                      <p className="text-xs text-on-surface-variant leading-relaxed break-words whitespace-normal">
+                        Acknowledge agreement with the congregation&apos;s data use policy.
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 pt-1">
+                      <Switch id="terms-service-switch" className="data-[state=checked]:bg-primary" />
+                    </div>
+                  </div>
+
+                  <div className="pt-2 px-1">
+                    <p className="text-[11px] italic text-on-surface-variant leading-relaxed">
+                      You can update your consent preferences at any time. Changes will be recorded in the congregation archives.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
