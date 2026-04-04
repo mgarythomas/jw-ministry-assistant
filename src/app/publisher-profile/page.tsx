@@ -5,11 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Switch } from "@/components/ui/switch";
 import {
   Search, Bell, Settings, Users, User, ClipboardList,
   Map as MapIcon, BarChart3, LogOut, Badge as BadgeIcon,
   Contact, Calendar, Waves, ShieldCheck, Sparkles,
-  UserCircle, HeartHandshake, Verified, Info
+  UserCircle, HeartHandshake, Verified, Info, Shield as ShieldIcon
 } from "lucide-react";
 
 export default function PublisherProfile() {
@@ -184,6 +185,60 @@ export default function PublisherProfile() {
                       <Input className="w-full bg-transparent border-none focus-visible:ring-0 p-6 shadow-none text-on-surface/60 cursor-not-allowed" disabled type="date" defaultValue="2023-11-15" />
                     </div>
                     <p className="text-[10px] text-on-surface-variant/70 mt-2 italic">This record is updated by the congregation administration after each security briefing.</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Privacy & Consent Preferences Section */}
+              <Card className="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-none">
+                <CardHeader className="p-0 flex flex-row items-center gap-3 mb-6 space-y-0">
+                  <ShieldIcon size={24} className="text-primary" />
+                  <CardTitle className="text-xl font-bold font-headline">Privacy &amp; Consent Preferences</CardTitle>
+                </CardHeader>
+                <CardContent className="p-0 space-y-4">
+                  {/* Preference Item 1 */}
+                  <div className="flex items-start justify-between p-6 bg-surface-container-low rounded-lg gap-6 group">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-sm mb-1.5">Contact Information</h3>
+                      <p className="text-xs text-on-surface-variant leading-relaxed break-words whitespace-normal">
+                        I consent to the congregation maintaining my contact information (Address, Email, and Phone numbers) for internal communication and support. This information will only be shared with Elders and only when required to perform their role as shepherds within the congregation.
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 pt-1">
+                      <Switch id="contact-info-switch" defaultChecked className="data-[state=checked]:bg-primary" />
+                    </div>
+                  </div>
+
+                  {/* Preference Item 2 */}
+                  <div className="flex items-start justify-between p-6 bg-surface-container-low rounded-lg gap-6 group">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-sm mb-1.5">Role Visibility</h3>
+                      <p className="text-xs text-on-surface-variant leading-relaxed break-words whitespace-normal">
+                        Include your spiritual appointments on congregation lists.
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 pt-1">
+                      <Switch id="role-visibility-switch" defaultChecked className="data-[state=checked]:bg-primary" />
+                    </div>
+                  </div>
+
+                  {/* Preference Item 3 */}
+                  <div className="flex items-start justify-between p-6 bg-surface-container-low rounded-lg gap-6 group">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-sm mb-1.5">Terms of Service</h3>
+                      <p className="text-xs text-on-surface-variant leading-relaxed break-words whitespace-normal">
+                        Acknowledge agreement with the congregation&apos;s data use policy.
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 pt-1">
+                      <Switch id="terms-service-switch" className="data-[state=checked]:bg-primary" />
+                    </div>
+                  </div>
+
+                  <div className="pt-2 px-1">
+                    <p className="text-[11px] italic text-on-surface-variant leading-relaxed">
+                      You can update your consent preferences at any time. Changes will be recorded in the congregation archives.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
