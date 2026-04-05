@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "prisma generate --schema=prisma/publisher.prisma",
+    "generate": "prisma generate --schema=prisma/publisher.prisma",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
