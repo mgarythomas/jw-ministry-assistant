@@ -44,7 +44,7 @@ export default function PublisherProfile() {
       </nav>
 
       {/* SideNavBar (Desktop Only) */}
-      <aside className="hidden md:flex h-screen w-64 fixed left-0 top-0 bg-[#fbf9f8] dark:bg-slate-950 flex-col p-4 space-y-2 pt-20 border-r-0">
+      <aside className="hidden md:flex h-[calc(100vh-4rem)] w-64 fixed left-0 top-16 bg-[#fbf9f8] dark:bg-slate-950 flex-col p-4 space-y-2 pt-4 border-r-0">
         <div className="px-4 py-6 mb-4">
           <h2 className="text-lg font-black text-[#0061a4] dark:text-[#2196f3] font-headline">The Serene Archivist</h2>
           <p className="text-xs font-semibold text-on-surface-variant/70 uppercase tracking-widest mt-1">Elder Management</p>

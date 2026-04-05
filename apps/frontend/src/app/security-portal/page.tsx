@@ -38,7 +38,7 @@ export default function SecurityPortal() {
   return (
     <div className="bg-surface text-on-surface antialiased min-h-screen font-body flex">
       {/* Sidebar (Desktop) */}
-      <aside className="hidden lg:flex flex-col h-screen w-72 fixed left-0 top-0 bg-surface-container-lowest font-body text-sm antialiased border-r-0 shadow-xl z-40">
+      <aside className="hidden lg:flex flex-col h-[calc(100vh-4rem)] w-72 fixed left-0 top-16 bg-surface-container-lowest font-body text-sm antialiased border-r-0 shadow-xl z-40">
         <div className="p-6 pb-8">
           <div className="text-lg font-black text-blue-700 mb-8 font-headline">
             Admin Portal

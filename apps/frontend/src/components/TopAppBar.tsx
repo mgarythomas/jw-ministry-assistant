@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Bell, Settings, User, LogOut, ChevronDown } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 interface TopAppBarProps {
   title?: string;
@@ -22,7 +23,6 @@ const NAV_ITEMS = [
 ];
 
 export const TopAppBar: React.FC<TopAppBarProps> = ({
-  title = "The Archivist",
   activeTab,
   role = "Elder",
   userName = "Brother Bennett",
@@ -52,35 +52,33 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
   return (
     <header className="fixed top-0 w-full z-50 bg-[#fbf9f8]/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_1px_0_0_rgba(27,28,28,0.06)] border-b border-outline/5">
       <div className="flex items-center justify-between px-6 h-16 max-w-screen-2xl mx-auto w-full">
-        {/* Left: App Brand */}
-        <div className="flex items-center gap-8 shrink-0">
-          <Link href="/dashboard" className="text-lg font-black tracking-tight text-[#0061a4] dark:text-blue-300 font-headline whitespace-nowrap">
-            {title}
-          </Link>
+        <div className="flex items-center justify-between w-full">
+          {/* Left: Empty or future items */}
+          <div className="flex-1" />
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1 font-headline text-sm tracking-tight">
-            {NAV_ITEMS.map(({ label, href }) => {
-              const isActive = activeTab === label;
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  className={`px-3 py-2 rounded-xl transition-all duration-200 ${
-                    isActive
-                      ? "text-[#0061a4] font-semibold bg-blue-50/70 dark:bg-blue-900/30 dark:text-blue-300"
-                      : "text-slate-500 dark:text-slate-400 hover:bg-slate-100/60 dark:hover:bg-slate-800/60 hover:text-[#0061a4] dark:hover:text-blue-300"
-                  }`}
-                >
-                  {label}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
+          {/* Right: Nav, Actions + User */}
+          <div className="flex items-center gap-4 shrink-0">
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-1 font-headline text-sm tracking-tight mr-2">
+              {NAV_ITEMS.map(({ label, href }) => {
+                const isActive = activeTab === label;
+                return (
+                  <Link
+                    key={label}
+                    href={href}
+                    className={`px-3 py-2 rounded-xl transition-all duration-200 ${
+                      isActive
+                        ? "text-[#0061a4] font-semibold bg-blue-50/70 dark:bg-blue-900/30 dark:text-blue-300"
+                        : "text-slate-500 dark:text-slate-400 hover:bg-slate-100/60 dark:hover:bg-slate-800/60 hover:text-[#0061a4] dark:hover:text-blue-300"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </nav>
 
-        {/* Right: Actions + User */}
-        <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1">
           {/* Bell */}
           <button
             className="w-9 h-9 flex items-center justify-center rounded-full text-slate-500 hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors active:scale-95"
@@ -102,9 +100,9 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
           <div className="w-px h-5 bg-outline/20 mx-2" />
 
           {/* Role badge (desktop only) */}
-          <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full bg-primary/8 text-[#0061a4] text-[11px] font-bold uppercase tracking-widest mr-2 border border-primary/10">
+          <Badge variant="outline" className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full bg-primary/8 text-[#0061a4] text-xs font-body font-semibold uppercase tracking-widest mr-2 border-primary/10">
             {role}
-          </span>
+          </Badge>
 
           {/* Avatar + Dropdown */}
           <div className="relative" ref={dropdownRef}>
@@ -168,6 +166,8 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
                 </div>
               </div>
             )}
+          </div>
+            </div>
           </div>
         </div>
       </div>

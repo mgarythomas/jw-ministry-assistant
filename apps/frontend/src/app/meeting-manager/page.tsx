@@ -15,7 +15,7 @@ export default function MeetingResourceManager() {
   return (
     <div className="bg-surface text-on-surface font-body min-h-screen">
       {/* Sidebar Navigation (Desktop/Tablet) */}
-      <aside className="hidden md:flex fixed left-0 top-0 h-full w-64 flex-col bg-surface-container-low border-r border-outline-variant/30 z-50">
+      <aside className="hidden md:flex fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 flex-col bg-surface-container-low border-r border-outline-variant/30 z-40">
         <div className="px-6 py-8">
           <h1 className="font-headline font-bold text-2xl tracking-tight text-[#0061a4]">Meeting Schedules</h1>
         </div>
