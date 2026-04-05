@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@prisma/publisher-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("PUBLISHER_DATABASE_URL")
+}
+
+model Publisher {
+  id        String   @id @default(uuid()) @db.Uuid
+  firstName String
+  lastName  String
+  status    String   // Active, Irregular, Inactive
+  type      String   // Publisher, Unbaptized, Regular Pioneer
+  group     String
+  phone     String?
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
