@@ -13,7 +13,7 @@ export default function MeetingScheduler() {
       <TopAppBar activeTab="Assignments" />
 
       {/* SideNavBar */}
-      <aside className="h-screen w-64 fixed left-0 top-0 bg-white dark:bg-zinc-950 flex flex-col py-6 z-40 transition-all duration-300 ease-in-out font-headline text-sm shadow-sm hidden lg:flex border-r border-outline-variant/30">
+      <aside className="h-[calc(100vh-4rem)] w-64 fixed left-0 top-16 bg-white dark:bg-zinc-950 flex flex-col py-6 z-40 transition-all duration-300 ease-in-out font-headline text-sm shadow-sm hidden lg:flex border-r border-outline-variant/30">
         <div className="px-6 mb-8 flex items-center gap-3">
           <Avatar className="w-10 h-10 rounded-full border-2 border-primary/10">
             <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuA30MIf--TUBIkhnf_w4LgPK5ClMhWayrwzI6NE2O_DHKvBHqtOpnMZuVpHjaxHxyqb9AzPpV9M2mjCC35ACslBFwmpirYmjiDEeF10qQW8nMTzU0HMHGrnYfQCShfZrxxG2ALb8zXGyChuMDpqIJQqPyVrq-TEnmRchiRfcLlRzFi-xbVOnd71YxCp2nOI3np_A0BvOil-fVQm33bW8U0C7VjKtijyoWo84cayyJkgWa_Fz3Kus8yghYhItz8n_g_ju6JkEDUD" alt="Elder" className="object-cover" />
