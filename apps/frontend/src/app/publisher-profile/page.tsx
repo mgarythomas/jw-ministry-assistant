@@ -17,68 +17,69 @@ export default function PublisherProfile() {
   return (
     <div className="bg-background text-on-background min-h-screen font-body">
       {/* TopAppBar */}
-      <nav className="fixed top-0 w-full z-50 bg-[#fbf9f8]/70 dark:bg-slate-900/70 backdrop-blur-md shadow-sm dark:shadow-none flex justify-between items-center px-6 py-3">
-        <div className="flex items-center gap-4">
-          <span className="text-xl font-bold tracking-tight text-[#1b1c1c] dark:text-slate-100 font-headline">The Serene Archivist</span>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center bg-[#efeded] dark:bg-slate-800 rounded-full px-4 py-1.5 transition-colors">
-            <Search size={16} className="text-slate-500 mr-2" />
-            <input className="bg-transparent border-none focus:ring-0 text-sm w-48 outline-none placeholder:text-slate-500" placeholder="Search records..." type="text" />
+      <nav className="fixed top-0 w-full z-50 bg-[#fbf9f8]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-sm dark:shadow-none flex justify-between items-center px-8 h-16 font-headline tracking-tight">
+        <div className="flex items-center gap-6">
+          <span className="text-2xl font-bold tracking-tighter text-[#1b1c1c] dark:text-[#fbf9f8]">Elder</span>
+          <div className="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-1.5 transition-colors">
+            <Search size={14} className="text-slate-500 mr-2" />
+            <input className="bg-transparent border-none focus:ring-0 text-sm w-48 text-slate-900 dark:text-slate-100 outline-none placeholder:text-slate-500" placeholder="Search records..." type="text" />
           </div>
-          <div className="flex items-center gap-2">
-            <button className="p-2 text-[#1b1c1c]/60 dark:text-slate-400 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-full transition-colors active:scale-95 duration-200">
-              <Bell size={20} />
-            </button>
-            <button className="p-2 text-[#1b1c1c]/60 dark:text-slate-400 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-full transition-colors active:scale-95 duration-200">
-              <Settings size={20} />
-            </button>
-            <div className="h-10 w-10 rounded-full overflow-hidden ml-2 ring-2 ring-primary/10">
-              <Avatar className="w-full h-full">
-                <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgBZBneET4fAyVJqw90UEITpxiXIP61aRsOYnyrFVpxLciLj0c9pRhmhmj1IbWDgcV_rq-tY_abOV7Q3cNllVkr0ayOu9m1egDgWCpopWqlZ9nFH3wmaUo3a4ZrGwjG3RH3wGFQimzPXvDedbC3a1sYkfNs30-_v4tD9i0Og2eFN1cJM87uVW5rJtfcIFqmpUu0zoMz7apv5UFPRPuludVM0w8di46u4lqhV9V2dyFXpHUn9aSgogbWbo6ySi2WUApcvtY7-2h" alt="User" className="object-cover" />
-                <AvatarFallback>U</AvatarFallback>
-              </Avatar>
-            </div>
+        </div>
+        <div className="hidden lg:flex items-center gap-8">
+          <a className="text-[#0061a4] dark:text-[#2196f3] font-semibold text-sm cursor-pointer active:scale-95 duration-200" href="#">Publisher</a>
+          <a className="text-[#1b1c1c] dark:text-[#efeded] hover:text-[#0061a4] transition-colors text-sm cursor-pointer active:scale-95 duration-200" href="#">Meeting</a>
+          <a className="text-[#1b1c1c] dark:text-[#efeded] hover:text-[#0061a4] transition-colors text-sm cursor-pointer active:scale-95 duration-200" href="#">Territory</a>
+        </div>
+        <div className="flex items-center gap-2">
+          <button className="p-2 text-slate-500 dark:text-slate-400 hover:bg-[#efeded]/50 dark:hover:bg-slate-800 rounded-full transition-colors active:scale-95 duration-200">
+            <Bell size={20} />
+          </button>
+          <button className="p-2 text-slate-500 dark:text-slate-400 hover:bg-[#efeded]/50 dark:hover:bg-slate-800 rounded-full transition-colors active:scale-95 duration-200">
+            <Settings size={20} />
+          </button>
+          <div className="h-10 w-10 rounded-full overflow-hidden ml-2 ring-2 ring-primary/10 cursor-pointer active:scale-95 duration-200">
+            <Avatar className="w-full h-full">
+              <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgBZBneET4fAyVJqw90UEITpxiXIP61aRsOYnyrFVpxLciLj0c9pRhmhmj1IbWDgcV_rq-tY_abOV7Q3cNllVkr0ayOu9m1egDgWCpopWqlZ9nFH3wmaUo3a4ZrGwjG3RH3wGFQimzPXvDedbC3a1sYkfNs30-_v4tD9i0Og2eFN1cJM87uVW5rJtfcIFqmpUu0zoMz7apv5UFPRPuludVM0w8di46u4lqhV9V2dyFXpHUn9aSgogbWbo6ySi2WUApcvtY7-2h" alt="User" className="object-cover" />
+              <AvatarFallback>U</AvatarFallback>
+            </Avatar>
           </div>
         </div>
       </nav>
 
       {/* SideNavBar (Desktop Only) */}
-      <aside className="hidden md:flex h-[calc(100vh-4rem)] w-64 fixed left-0 top-16 bg-[#fbf9f8] dark:bg-slate-950 flex-col p-4 space-y-2 pt-4 border-r-0">
-        <div className="px-4 py-6 mb-4">
-          <h2 className="text-lg font-black text-[#0061a4] dark:text-[#2196f3] font-headline">The Serene Archivist</h2>
-          <p className="text-xs font-semibold text-on-surface-variant/70 uppercase tracking-widest mt-1">Elder Management</p>
+      <aside className="hidden md:flex h-screen w-64 fixed left-0 top-0 pt-20 bg-[#fbf9f8] dark:bg-slate-950 flex-col gap-4 px-4 border-r-0 font-headline font-medium text-sm">
+        <div className="px-4 py-4 mb-2">
+          <h2 className="text-xl font-black text-[#1b1c1c] dark:text-[#fbf9f8]">Elder</h2>
+          <p className="text-[10px] font-semibold text-on-surface-variant/70 uppercase tracking-widest mt-0.5">Congregation Management</p>
         </div>
-        <nav className="space-y-1">
-          <a className="flex items-center gap-3 px-4 py-3 text-[#1b1c1c]/70 dark:text-slate-300 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-lg transition-all ease-in-out hover:translate-x-1 duration-300" href="#">
-            <Users size={20} />
-            <span className="font-headline text-sm font-semibold">Congregation</span>
+        <nav className="flex flex-col gap-1">
+          <div className="mb-2">
+            <a className="flex items-center gap-3 px-4 py-3 text-[#0061a4] dark:text-[#2196f3] bg-[#efeded] dark:bg-slate-800 rounded-r-full hover:pl-2 transition-all duration-300 hover:translate-x-1" href="#">
+              <Users size={20} />
+              <span>Publisher</span>
+            </a>
+            <button className="w-full mt-1 ml-8 text-left px-4 py-2 text-xs font-medium text-primary hover:bg-primary/5 rounded-l-full transition-all flex items-center gap-2 group">
+              <UserCircle size={16} />
+              <span>Add New Publisher</span>
+            </button>
+          </div>
+          <a className="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-[#0061a4] hover:pl-2 transition-all duration-300 hover:translate-x-1" href="#">
+            <Calendar size={20} />
+            <span>Meeting</span>
           </a>
-          <a className="flex items-center gap-3 px-4 py-3 text-[#1b1c1c]/70 dark:text-slate-300 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-lg transition-all ease-in-out hover:translate-x-1 duration-300" href="#">
-            <User size={20} />
-            <span className="font-headline text-sm font-semibold">Publishers</span>
-          </a>
-          <a className="flex items-center gap-3 px-4 py-3 text-[#1b1c1c]/70 dark:text-slate-300 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-lg transition-all ease-in-out hover:translate-x-1 duration-300" href="#">
-            <ClipboardList size={20} />
-            <span className="font-headline text-sm font-semibold">Assignments</span>
-          </a>
-          <a className="flex items-center gap-3 px-4 py-3 text-[#1b1c1c]/70 dark:text-slate-300 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-lg transition-all ease-in-out hover:translate-x-1 duration-300" href="#">
+          <a className="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-[#0061a4] hover:pl-2 transition-all duration-300 hover:translate-x-1" href="#">
             <MapIcon size={20} />
-            <span className="font-headline text-sm font-semibold">Field Service</span>
-          </a>
-          <a className="flex items-center gap-3 px-4 py-3 text-[#1b1c1c]/70 dark:text-slate-300 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-lg transition-all ease-in-out hover:translate-x-1 duration-300" href="#">
-            <BarChart3 size={20} />
-            <span className="font-headline text-sm font-semibold">Reports</span>
+            <span>Territory</span>
           </a>
         </nav>
-        <div className="mt-auto pt-8 border-t border-surface-container">
-          <a className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#0061a4] to-[#2196f3] text-white rounded-lg shadow-md transition-all ease-in-out hover:translate-x-1 duration-300" href="#">
+        <div className="mt-auto pb-8 flex flex-col gap-1">
+          <a className="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-[#0061a4] hover:pl-2 transition-all duration-300 hover:translate-x-1" href="#">
             <Settings size={20} />
-            <span className="font-headline text-sm font-semibold">Settings</span>
+            <span>Settings</span>
           </a>
-          <a className="flex items-center gap-3 px-4 py-3 text-[#1b1c1c]/70 dark:text-slate-300 hover:bg-[#efeded] dark:hover:bg-slate-800 rounded-lg transition-all ease-in-out hover:translate-x-1 duration-300" href="#">
+          <a className="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-[#0061a4] hover:pl-2 transition-all duration-300 hover:translate-x-1" href="#">
             <LogOut size={20} />
-            <span className="font-headline text-sm font-semibold">Log out</span>
+            <span>Log out</span>
           </a>
         </div>
       </aside>
@@ -115,15 +116,15 @@ export default function PublisherProfile() {
                 <CardContent className="p-0 grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="col-span-1">
                     <label className="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">First Name</label>
-                    <Input className="w-full bg-surface-container-low border-none border-b-2 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-t-md rounded-b-none p-6 shadow-none" type="text" defaultValue="Julian" />
+                    <Input className="w-full bg-surface-container-low border-none border-b-2 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-t-md rounded-b-none p-4 shadow-none" type="text" defaultValue="Julian" />
                   </div>
                   <div className="col-span-1">
                     <label className="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Last Name</label>
-                    <Input className="w-full bg-surface-container-low border-none border-b-2 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-t-md rounded-b-none p-6 shadow-none" type="text" defaultValue="Sterling" />
+                    <Input className="w-full bg-surface-container-low border-none border-b-2 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-t-md rounded-b-none p-4 shadow-none" type="text" defaultValue="Sterling" />
                   </div>
                   <div className="col-span-full">
                     <label className="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Preferred Name</label>
-                    <Input className="w-full bg-surface-container-low border-none border-b-2 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-t-md rounded-b-none p-6 shadow-none" type="text" defaultValue="Jules" />
+                    <Input className="w-full bg-surface-container-low border-none border-b-2 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-t-md rounded-b-none p-4 shadow-none" type="text" defaultValue="Jules" />
                   </div>
                 </CardContent>
               </Card>
@@ -312,15 +313,15 @@ export default function PublisherProfile() {
                 <CardContent className="p-0">
                   <p className="text-sm text-on-tertiary-container/80 mb-6">Select months you wish to volunteer for increased activity.</p>
 
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-3 gap-2">
                     {["JAN", "FEB"].map(month => (
-                      <Button key={month} variant="outline" className="p-6 text-xs font-bold rounded bg-white/50 border border-tertiary-container/30 hover:bg-tertiary-container hover:text-white transition-all text-on-surface h-auto">{month}</Button>
+                      <Button key={month} variant="outline" className="p-3 text-xs font-bold rounded bg-white/50 border border-tertiary-container/30 hover:bg-tertiary-container hover:text-white transition-all text-on-surface h-auto">{month}</Button>
                     ))}
                     {["MAR", "APR"].map(month => (
-                      <Button key={month} className="p-6 text-xs font-bold rounded bg-tertiary-container text-white shadow-sm hover:bg-tertiary-container/90 h-auto border-none">{month}</Button>
+                      <Button key={month} className="p-3 text-xs font-bold rounded bg-tertiary-container text-white shadow-sm hover:bg-tertiary-container/90 h-auto border-none">{month}</Button>
                     ))}
                     {["MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"].map(month => (
-                      <Button key={month} variant="outline" className="p-6 text-xs font-bold rounded bg-white/50 border border-tertiary-container/30 hover:bg-tertiary-container hover:text-white transition-all text-on-surface h-auto">{month}</Button>
+                      <Button key={month} variant="outline" className="p-3 text-xs font-bold rounded bg-white/50 border border-tertiary-container/30 hover:bg-tertiary-container hover:text-white transition-all text-on-surface h-auto">{month}</Button>
                     ))}
                   </div>
                 </CardContent>

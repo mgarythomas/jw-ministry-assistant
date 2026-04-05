@@ -95,6 +95,50 @@ paths:
           description: Publisher deleted
         '404':
           description: Publisher not found
+  /{publisherId}/transfer:
+    post:
+      summary: Transfer a publisher
+      operationId: transferPublisher
+      parameters:
+        - name: publisherId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferPublisherInput'
+      responses:
+        '200':
+          description: Publisher transfer initiated
+        '404':
+          description: Publisher not found
+  /{publisherId}/deactivate:
+    post:
+      summary: Deactivate a publisher
+      operationId: deactivatePublisher
+      parameters:
+        - name: publisherId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeactivatePublisherInput'
+      responses:
+        '200':
+          description: Publisher deactivated
+        '404':
+          description: Publisher not found
 components:
   schemas:
     Publisher:
@@ -132,8 +176,27 @@ components:
         - status
         - type
         - group
-        - createdAt
-        - updatedAt
+    TransferPublisherInput:
+      type: object
+      properties:
+        destinationCongregation:
+          type: string
+        transferDate:
+          type: string
+          format: date
+      required:
+        - destinationCongregation
+        - transferDate
+    DeactivatePublisherInput:
+      type: object
+      properties:
+        reason:
+          type: string
+          enum: [moved, status, inactive, deceased, other]
+        notes:
+          type: string
+      required:
+        - reason
     PublisherInput:
       type: object
       properties:
