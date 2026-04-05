@@ -9,10 +9,14 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
     if (!publisherId) {
       return { statusCode: 400, body: JSON.stringify({ error: 'Missing publisherId' }) };
     }
-    await prisma.publisher.delete({ where: { id: publisherId } });
+    if (!event.body) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'Missing request body' }) };
+    }
+    const data = JSON.parse(event.body);
+    const publisher = await prisma.publisher.update({ where: { id: publisherId }, data });
     return {
-      statusCode: 204,
-      body: '',
+      statusCode: 200,
+      body: JSON.stringify(publisher),
     };
   } catch (error) {
     console.error(error);

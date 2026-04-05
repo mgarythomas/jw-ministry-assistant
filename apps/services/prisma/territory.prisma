@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@prisma/territory-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("TERRITORY_DATABASE_URL")
+}
+
+model Territory {
+  id          String                @id @default(uuid()) @db.Uuid
+  number      String
+  name        String
+  mapUrl      String?
+  status      String                // Available, Assigned, Completed
+  assignments TerritoryAssignment[]
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+}
+
+model TerritoryAssignment {
+  id          String    @id @default(uuid()) @db.Uuid
+  territoryId String    @db.Uuid
+  territory   Territory @relation(fields: [territoryId], references: [id])
+  publisherId String    @db.Uuid
+  assignedAt  DateTime  @default(now())
+  completedAt DateTime?
+}

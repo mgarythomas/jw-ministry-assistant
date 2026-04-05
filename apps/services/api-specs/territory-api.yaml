@@ -1,0 +1,217 @@
+openapi: 3.1.0
+info:
+  title: Territory Domain API
+  version: 1.0.0
+  description: API specification for the Territory domain, providing endpoints for territory management and mapping.
+servers:
+  - url: /api/v1/territories
+paths:
+  /:
+    get:
+      summary: List all territories
+      operationId: listTerritories
+      responses:
+        '200':
+          description: A list of territories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Territory'
+    post:
+      summary: Create a new territory
+      operationId: createTerritory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerritoryInput'
+      responses:
+        '201':
+          description: Territory created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Territory'
+  /{territoryId}:
+    get:
+      summary: Get a territory by ID
+      operationId: getTerritory
+      parameters:
+        - name: territoryId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Territory details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Territory'
+        '404':
+          description: Territory not found
+    put:
+      summary: Update a territory
+      operationId: updateTerritory
+      parameters:
+        - name: territoryId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerritoryInput'
+      responses:
+        '200':
+          description: Territory updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Territory'
+        '404':
+          description: Territory not found
+    delete:
+      summary: Delete a territory
+      operationId: deleteTerritory
+      parameters:
+        - name: territoryId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Territory deleted
+        '404':
+          description: Territory not found
+  /{territoryId}/assignments:
+    get:
+      summary: Get assignments for a territory
+      operationId: listTerritoryAssignments
+      parameters:
+        - name: territoryId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of assignments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TerritoryAssignment'
+    post:
+      summary: Assign territory to a publisher
+      operationId: assignTerritory
+      parameters:
+        - name: territoryId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerritoryAssignmentInput'
+      responses:
+        '201':
+          description: Assignment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerritoryAssignment'
+components:
+  schemas:
+    Territory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          type: string
+        name:
+          type: string
+        mapUrl:
+          type: string
+        status:
+          type: string
+          enum: [Available, Assigned, Completed]
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - number
+        - name
+        - status
+        - createdAt
+        - updatedAt
+    TerritoryInput:
+      type: object
+      properties:
+        number:
+          type: string
+        name:
+          type: string
+        mapUrl:
+          type: string
+        status:
+          type: string
+          enum: [Available, Assigned, Completed]
+      required:
+        - number
+        - name
+        - status
+    TerritoryAssignment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        territoryId:
+          type: string
+          format: uuid
+        publisherId:
+          type: string
+          format: uuid
+        assignedAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - territoryId
+        - publisherId
+        - assignedAt
+    TerritoryAssignmentInput:
+      type: object
+      properties:
+        publisherId:
+          type: string
+          format: uuid
+      required:
+        - publisherId

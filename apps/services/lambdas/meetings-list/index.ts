@@ -1,18 +1,14 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { PrismaClient } from '@prisma/publisher-client';
+import { PrismaClient } from '@prisma/meetings-client';
 
 const prisma = new PrismaClient();
 
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
-    const publisherId = event.pathParameters?.publisherId;
-    if (!publisherId) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'Missing publisherId' }) };
-    }
-    await prisma.publisher.delete({ where: { id: publisherId } });
+    const meetings = await prisma.meeting.findMany();
     return {
-      statusCode: 204,
-      body: '',
+      statusCode: 200,
+      body: JSON.stringify(meetings),
     };
   } catch (error) {
     console.error(error);
