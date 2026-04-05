@@ -7,8 +7,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
-  Menu, Mic, Settings, Users, Calendar,
-  MessageSquarePlus, Send, FileText, Download, XCircle, Info, History, Plus, ShieldCheck
+  Menu, Mic, Settings, Users, Calendar, UserPlus, ChevronRight, Search, Bell,
+  MessageSquarePlus, Send, FileText, Download, XCircle, Info, History, Plus, ShieldCheck, Map as MapIcon
 } from "lucide-react";
 
 export default function MeetingResourceManager() {
@@ -19,41 +19,73 @@ export default function MeetingResourceManager() {
         <div className="px-6 py-8">
           <h1 className="font-headline font-bold text-2xl tracking-tight text-[#0061a4]">Meeting Schedules</h1>
         </div>
-        <nav className="flex-1 px-4 space-y-2">
-          <a className="flex items-center gap-4 px-4 py-3 bg-primary/10 text-primary font-bold rounded-xl transition-all" href="#">
-            <Calendar size={20} className="fill-current" />
-            <span>Schedule</span>
-          </a>
-          <a className="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-all rounded-xl" href="#">
-            <Mic size={20} />
-            <span>Speakers</span>
-          </a>
-          <a className="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-all rounded-xl" href="#">
+        <nav className="flex flex-col gap-1 px-4 flex-1">
+          <a className="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-[#0061a4] hover:pl-2 transition-all duration-300 hover:translate-x-1" href="#">
             <Users size={20} />
-            <span>Roles</span>
+            <span>Publisher</span>
           </a>
-          <a className="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-all rounded-xl" href="#">
-            <Settings size={20} />
-            <span>Settings</span>
+          <div className="ml-10 mt-1 mb-2 border-l-2 border-slate-200 dark:border-slate-800 pl-4">
+            <Button variant="ghost" className="w-full py-2 px-3 bg-surface-container-low text-on-surface-variant rounded-lg font-semibold hover:bg-primary/10 hover:text-primary transition-all text-[11px] flex items-center justify-start gap-2 h-auto border-none shadow-none">
+              <UserPlus size={16} />
+              Add New Publisher
+            </Button>
+          </div>
+          <a className="flex items-center gap-4 px-4 py-3 text-[#0061a4] dark:text-[#2196f3] bg-[#efeded] dark:bg-slate-800 rounded-r-full hover:pl-2 transition-all duration-300 hover:translate-x-1" href="#">
+            <Calendar size={20} className="fill-current" />
+            <span>Meeting</span>
+          </a>
+          <a className="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-[#0061a4] hover:pl-2 transition-all duration-300 hover:translate-x-1" href="#">
+            <MapIcon size={20} />
+            <span>Territory</span>
           </a>
         </nav>
         <div className="p-4 mt-auto">
-          <div className="bg-surface-container-highest/50 rounded-2xl p-4 flex items-center gap-3">
-            <Avatar className="w-10 h-10 rounded-full border border-primary/10">
+          <div className="bg-surface-container-low rounded-2xl p-4 flex items-center gap-3">
+            <Avatar className="w-10 h-10 rounded-full border border-primary/10 shrink-0">
               <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRR-TayNvlWwRavXgzoEhvIlNiKyEwf9NL9VG4ltF2Co3EoLzeKWPdvfegT2AL9QzFk6Hs8szl4CmusuKbX_uhI6-cbc7L5uBv2h4bZbK3CoCJLydL-xcLws5LEQyGf4Z5TJoX3v2byY0rDXYvAw5JO3QEfAzeHD8PD1XcEKDuLT3EfOJQC49Xh8wK3YK0kX14jM46-0wh_4PGD9tfw1UbWUefUIwQjIp-atC-CNBT_7T9PHTMvTnpXsRJHt64EPxkbgmugeDY" alt="Admin Profile" className="object-cover" />
-              <AvatarFallback>AD</AvatarFallback>
+              <AvatarFallback className="bg-primary-container text-on-primary-container font-bold">AD</AvatarFallback>
             </Avatar>
             <div className="overflow-hidden">
-              <p className="text-sm font-bold truncate">Congregation Admin</p>
-              <p className="text-[10px] uppercase tracking-widest font-black text-primary">Elder</p>
+              <p className="text-sm font-bold truncate text-[#1b1c1c] dark:text-[#fbf9f8]">Congregation Admin</p>
+              <p className="text-[10px] uppercase tracking-widest font-black text-[#0061a4]">Elder</p>
             </div>
           </div>
         </div>
       </aside>
 
-      <TopAppBar activeTab="Assignments" />
+      {/* Top Header Placeholder corresponding to Screen 3 reference */}
+      <header className="fixed top-0 left-0 right-0 w-full z-50 bg-[#fbf9f8]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-sm dark:shadow-none h-16 flex justify-between items-center px-8 font-headline tracking-tight">
+        <div className="flex items-center gap-8">
+          <div className="flex items-center gap-3">
+            <button className="md:hidden text-slate-500 hover:text-slate-900 transition-colors active:opacity-80 duration-150">
+              <Menu size={24} />
+            </button>
+            <h1 className="text-2xl font-bold tracking-tighter text-[#1b1c1c] dark:text-[#fbf9f8]">Elder</h1>
+          </div>
+          <div className="hidden md:flex items-center bg-slate-100/50 dark:bg-slate-800/50 px-3 py-1.5 rounded-lg border border-transparent focus-within:border-blue-500/30 transition-all">
+            <Search size={18} className="text-slate-500 mr-2" />
+            <input className="bg-transparent border-none focus:ring-0 text-sm font-medium w-64 placeholder:text-slate-400 outline-none" placeholder="Search..." type="text" />
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <button className="p-2 text-[#1b1c1c] dark:text-[#efeded] hover:bg-[#efeded]/50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 duration-200 rounded-full">
+            <Bell size={20} />
+          </button>
+          <button className="p-2 text-[#1b1c1c] dark:text-[#efeded] hover:bg-[#efeded]/50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 duration-200 rounded-full">
+            <Settings size={20} />
+          </button>
+          <div className="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+          <button className="flex items-center gap-2 pl-2 pr-1 py-1 rounded-full hover:bg-[#efeded]/50 dark:hover:bg-slate-800 transition-colors active:opacity-80 duration-150">
+            <Avatar className="w-8 h-8 border border-white/20">
+              <AvatarImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRR-TayNvlWwRavXgzoEhvIlNiKyEwf9NL9VG4ltF2Co3EoLzeKWPdvfegT2AL9QzFk6Hs8szl4CmusuKbX_uhI6-cbc7L5uBv2h4bZbK3CoCJLydL-xcLws5LEQyGf4Z5TJoX3v2byY0rDXYvAw5JO3QEfAzeHD8PD1XcEKDuLT3EfOJQC49Xh8wK3YK0kX14jM46-0wh_4PGD9tfw1UbWUefUIwQjIp-atC-CNBT_7T9PHTMvTnpXsRJHt64EPxkbgmugeDY" className="object-cover" />
+              <AvatarFallback>AD</AvatarFallback>
+            </Avatar>
+            <ChevronRight size={16} className="text-slate-400 rotate-90" />
+          </button>
+        </div>
+      </header>
       {/* Main Content Area */}
-      <main className="md:ml-64 pt-20 md:pt-12 px-6 lg:px-12 max-w-[1600px] mx-auto space-y-8 pb-32 md:pb-12">
+      <main className="md:ml-64 pt-24 md:pt-24 px-6 lg:px-12 max-w-[1600px] mx-auto space-y-8 pb-32 md:pb-12">
         {/* Hero Title & Quick Actions Section */}
         <section className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div className="space-y-2">
@@ -287,21 +319,17 @@ export default function MeetingResourceManager() {
 
       {/* Mobile Navigation Bar (Visible only on mobile) */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#ffffff]/80 backdrop-blur-xl z-50 rounded-t-[2.5rem] shadow-[0_-8px_32px_rgba(27,28,28,0.08)]">
-        <a className="flex flex-col items-center justify-center bg-gradient-to-br from-[#0061a4] to-[#2196f3] text-white rounded-2xl px-5 py-2 active:scale-90 duration-300 ease-out" href="#">
-          <Calendar size={20} className="mb-1" />
-          <span className="font-body text-[11px] font-medium tracking-wide">Schedule</span>
-        </a>
-        <a className="flex flex-col items-center justify-center text-[#1b1c1c] opacity-60 px-5 py-2 hover:opacity-100 transition-opacity active:scale-90 duration-300 ease-out" href="#">
-          <Mic size={20} className="mb-1" />
-          <span className="font-body text-[11px] font-medium tracking-wide">Speakers</span>
-        </a>
         <a className="flex flex-col items-center justify-center text-[#1b1c1c] opacity-60 px-5 py-2 hover:opacity-100 transition-opacity active:scale-90 duration-300 ease-out" href="#">
           <Users size={20} className="mb-1" />
-          <span className="font-body text-[11px] font-medium tracking-wide">Roles</span>
+          <span className="font-body text-[11px] font-medium tracking-wide">Publisher</span>
+        </a>
+        <a className="flex flex-col items-center justify-center bg-gradient-to-br from-[#0061a4] to-[#2196f3] text-white rounded-2xl px-5 py-2 active:scale-90 duration-300 ease-out" href="#">
+          <Calendar size={20} className="mb-1" />
+          <span className="font-body text-[11px] font-medium tracking-wide">Meeting</span>
         </a>
         <a className="flex flex-col items-center justify-center text-[#1b1c1c] opacity-60 px-5 py-2 hover:opacity-100 transition-opacity active:scale-90 duration-300 ease-out" href="#">
-          <Settings size={20} className="mb-1" />
-          <span className="font-body text-[11px] font-medium tracking-wide">Settings</span>
+          <MapIcon size={20} className="mb-1" />
+          <span className="font-body text-[11px] font-medium tracking-wide">Territory</span>
         </a>
       </nav>
 
