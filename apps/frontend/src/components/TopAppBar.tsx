@@ -19,7 +19,7 @@ const NAV_ITEMS = [
   { label: "Publishers", href: "/publisher-directory" },
   { label: "Assignments", href: "/meeting-scheduler" },
   { label: "Territory", href: "/territory-management" },
-  { label: "Reports", href: "#" },
+  { label: "Reports", href: "/ministry-report" },
 ];
 
 export const TopAppBar: React.FC<TopAppBarProps> = ({
