@@ -1,18 +1,18 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { PrismaClient } from '@prisma/publisher-client';
+import { PrismaClient } from '@prisma/territory-client';
 
 const prisma = new PrismaClient();
 
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
-    const publisherId = event.pathParameters?.publisherId;
-    if (!publisherId) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'Missing publisherId' }) };
+    const territoryId = event.pathParameters?.territoryId;
+    if (!territoryId) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'Missing territoryId' }) };
     }
-    await prisma.publisher.delete({ where: { id: publisherId } });
+    const assignments = await prisma.territoryAssignment.findMany({ where: { territoryId } });
     return {
-      statusCode: 204,
-      body: '',
+      statusCode: 200,
+      body: JSON.stringify(assignments),
     };
   } catch (error) {
     console.error(error);
