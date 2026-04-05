@@ -18,6 +18,8 @@ importers:
         specifier: ^5.0.0
         version: 5.9.3
 
+  apps/database: {}
+
   apps/frontend:
     dependencies:
       '@base-ui/react':
@@ -82,7 +84,7 @@ importers:
         specifier: ^5
         version: 5.9.3
 
-  apps/services/lambdas/publisher-create:
+  apps/services/v1/lambdas/publisher-create:
     dependencies:
       '@types/aws-lambda':
         specifier: ^8.10.145
@@ -92,7 +94,7 @@ importers:
         specifier: ^5.0.0
         version: 5.9.3
 
-  apps/services/lambdas/publisher-delete:
+  apps/services/v1/lambdas/publisher-delete:
     dependencies:
       '@types/aws-lambda':
         specifier: ^8.10.145
